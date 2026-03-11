@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BloomBuilder</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section id="auth-view" class="panel">
+        <h1>BloomBuilder</h1>
+        <p>Create websites without writing code.</p>
+        <form id="email-auth-form" class="stack">
+          <label>
+            Email
+            <input type="email" id="email" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="password" minlength="6" required />
+          </label>
+          <div class="row">
+            <button type="submit" data-mode="signup">Sign up</button>
+            <button type="submit" data-mode="login">Log in</button>
+          </div>
+        </form>
+        <button id="google-login" class="secondary">Continue with Google</button>
+        <p class="muted" id="auth-status"></p>
+      </section>
+
+      <section id="site-setup-view" class="panel hidden">
+        <h2>Create your site</h2>
+        <label>
+          Site name
+          <input id="site-name" type="text" placeholder="My Portfolio" />
+        </label>
+        <div class="template-grid">
+          <button class="template" data-template="blank">Blank canvas</button>
+          <button class="template" data-template="business">Business template</button>
+          <button class="template" data-template="portfolio">Portfolio template</button>
+        </div>
+        <p class="muted" id="setup-status"></p>
+      </section>
+
+      <section id="builder-view" class="hidden">
+        <header class="topbar">
+          <div>
+            <h2 id="active-site-title"></h2>
+            <small id="save-status">Ready</small>
+          </div>
+          <div class="row">
+            <button id="preview-btn">Preview</button>
+            <button id="publish-btn" class="secondary">Publish (coming soon)</button>
+            <button id="logout-btn" class="secondary">Logout</button>
+          </div>
+        </header>
+
+        <div class="builder-layout">
+          <aside class="sidebar">
+            <h3>Pages</h3>
+            <ul id="page-list"></ul>
+            <button id="add-page-btn">+ Add Page</button>
+            <hr />
+            <h3>Blocks</h3>
+            <div id="block-palette" class="stack"></div>
+          </aside>
+
+          <section class="canvas-shell">
+            <h3 id="canvas-page-title"></h3>
+            <div id="canvas" class="canvas" aria-label="Website canvas"></div>
+          </section>
+
+          <aside class="sidebar">
+            <h3>Publishing</h3>
+            <p class="muted">Choose how you'll go live later.</p>
+            <label>
+              Custom domain
+              <input type="text" placeholder="www.yourdomain.com" disabled />
+            </label>
+            <label>
+              Or Webloom subdomain
+              <input type="text" placeholder="yoursite.webloom.app" disabled />
+            </label>
+            <p class="muted">Domain linking and publish flow are scaffolded for a future release.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <template id="block-template">
+      <article class="canvas-block" draggable="true"></article>
+    </template>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
